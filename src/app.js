@@ -39,6 +39,8 @@ class TvMaze {
   };
 
   renderCards = (shows) => {
+    this.viewElems.showsWrapper.innerHTML = "";
+
     for (const { show } of shows) {
       this.createShowCard(show);
     }
@@ -46,11 +48,22 @@ class TvMaze {
 
   createShowCard = (show) => {
     const divCard = createDOMElem("div", "card");
-    const img = createDOMElem("img", "card-img-top", null, show.image.medium);
     const divCardBody = createDOMElem("div", "card-body");
     const h5 = createDOMElem("h5", "card-title", show.showName);
-    const p = createDOMElem("p", "card-text", show.summary);
     const btn = createDOMElem("button", "btn btn-primary", "Show details");
+    let img, p;
+
+    if (show.image) {
+      img = createDOMElem("img", "card-img-top", null, show.image.medium);
+    } else {
+      img = createDOMElem("img", "card-img-top", null, "https://via.placeholder.com/210x295");
+    }
+
+    if (show.summary) {
+      p = createDOMElem("p", "card-text", `${show.summary.slice(0, 80)}...`);
+    } else {
+      p = createDOMElem("p", "card-text", "there is no summary for that show yet.");
+    }
 
     divCard.appendChild(divCardBody);
     divCardBody.appendChild(img);
