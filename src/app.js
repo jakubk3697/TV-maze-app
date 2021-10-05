@@ -1,5 +1,5 @@
 import { getShowsByKey } from "./requests.js";
-import { mapListToDOMElements } from "./domInteractions.js";
+import { mapListToDOMElements, createDOMElem } from "./domInteractions.js";
 
 class TvMaze {
   constructor() {
@@ -12,6 +12,7 @@ class TvMaze {
   initializeApp = () => {
     this.connectDOMElements();
     this.setupListeners();
+    this.fetchAndDisplayShows();
   };
 
   connectDOMElements = () => {
@@ -30,6 +31,34 @@ class TvMaze {
 
   setCurrentNameFilter = () => {
     this.selectedName = event.target.dataset.showName;
+    this.fetchAndDisplayShows();
+  };
+
+  fetchAndDisplayShows = () => {
+    getShowsByKey(this.selectedName).then((shows) => this.renderCards(shows));
+  };
+
+  renderCards = (shows) => {
+    for (const { show } of shows) {
+      this.createShowCard(show);
+    }
+  };
+
+  createShowCard = (show) => {
+    const divCard = createDOMElem("div", "card");
+    const img = createDOMElem("img", "card-img-top", null, show.image.medium);
+    const divCardBody = createDOMElem("div", "card-body");
+    const h5 = createDOMElem("h5", "card-title", show.showName);
+    const p = createDOMElem("p", "card-text", show.summary);
+    const btn = createDOMElem("button", "btn btn-primary", "Show details");
+
+    divCard.appendChild(divCardBody);
+    divCardBody.appendChild(img);
+    divCardBody.appendChild(h5);
+    divCardBody.appendChild(p);
+    divCardBody.appendChild(btn);
+
+    this.viewElems.showsWrapper.appendChild(divCard);
   };
 }
 
