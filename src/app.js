@@ -80,12 +80,13 @@ class TvMaze {
         img = createDOMElem("img", "card-img-top", null, show.image.medium);
       }
     } else {
-      img = createDOMElem("img", "card-img-top", null, "https://via.placeholder.com/210x295");
+      img = createDOMElem("div", "card-preview-bg", null, null, "https://via.placeholder.com/210x295");
     }
 
     if (show.summary) {
       const result = show.summary.replace(/<[^>]*>/g, "");
       if (isDetailed) {
+        console.log(show.summary);
         p = createDOMElem("p", "card-text", result);
       } else {
         p = createDOMElem("p", "card-text", `${result.slice(0, 80)}...`);

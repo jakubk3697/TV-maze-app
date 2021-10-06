@@ -54,3 +54,14 @@ body {
   background-position: center;
   background-size: cover;
 }
+
+.shows-wrapper .card-body {
+  position: relative;
+  min-height: 500px;
+}
+
+.shows-wrapper .card-body .btn {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
