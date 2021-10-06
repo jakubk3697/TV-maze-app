@@ -1,8 +1,8 @@
 OK-> 1. Zmienić przycisk w #showPreview z "Show details" na czerwony "Close details" (klasa bootstrap) albo dodać X w prawym górnym rogu
 OK-> 2. Zablokować "scroll" jak jest otwarty modal #showPreview, jak się go zamknie to odblokowac scroll
-W TOKU 3. Zamiast pola do wyboru zrobić input do wpisywania nazw filmów.
-OK -> 4. Usunąć znaczniki z 'p' (bez innerHTML)
+OK-> 3. Zamiast pola do wyboru zrobić input do wpisywania nazw filmów.
+OK-> 4. Usunąć znaczniki z 'p' (bez innerHTML)
 OK-> 5. Poprawić style (np. show details na tej samej wysokości)
-6. Dodać paginację (np. 10 na stronę)
+--6. Dodać paginację (np. 10 na stronę)
 7. Dodać funkcjonalność 'ulubione'.
 8. Dodać linki do źródła w kartach

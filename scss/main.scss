@@ -57,7 +57,6 @@ body {
 
 .shows-wrapper {
   .card-title {
-    // text-align: center;
     padding: 10px 0;
   }
 
@@ -66,5 +65,21 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height: 500px;
+  }
+}
+
+.tvmazeLink {
+  display: block;
+  padding: 10px 0;
+  color: #0003ff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 1;
+    text-decoration: underline;
   }
 }

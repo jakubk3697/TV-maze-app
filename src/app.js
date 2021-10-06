@@ -55,6 +55,7 @@ class TvMaze {
     this.viewElems.showsWrapper.innerHTML = "";
 
     for (const { show } of shows) {
+      console.log(show);
       const card = this.createShowCard(show);
       this.viewElems.showsWrapper.appendChild(card);
     }
@@ -83,8 +84,9 @@ class TvMaze {
     const divCardBody = createDOMElem("div", "card-body");
     const h5 = createDOMElem("h5", "card-title", show.name);
     const box = createDOMElem("div", "box");
-    let btn;
-    let img, p;
+    const link = createDOMElem("a", "tvmazeLink", "Check on TVmaze!");
+    link.href = show.url;
+    let img, p, btn;
 
     if (show.image) {
       if (isDetailed) {
@@ -111,18 +113,20 @@ class TvMaze {
     if (isDetailed) {
       btn = createDOMElem("button", "btn btn-danger", "Show details");
       btn.textContent = "Close details";
-      btn.addEventListener("click", this.closeDetailsView);
       disableScrolling();
+      btn.addEventListener("click", this.closeDetailsView);
     } else {
       btn = createDOMElem("button", "btn btn-primary", "Show details");
       btn.textContent = "Show details";
       btn.addEventListener("click", this.openDetailsView);
     }
+
     btn.dataset.showId = show.id;
     divCard.appendChild(divCardBody);
     divCardBody.appendChild(img);
     box.appendChild(h5);
     box.appendChild(p);
+    box.appendChild(link);
     box.appendChild(btn);
     divCardBody.appendChild(box);
 
