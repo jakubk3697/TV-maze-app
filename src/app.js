@@ -7,7 +7,7 @@ class TvMaze {
     this.scrollX;
     this.scrollY;
     this.showNameButtons = {};
-    this.selectedName = "harry";
+    this.selectedName = "john doe";
     this.initializeApp();
   }
 
@@ -29,11 +29,21 @@ class TvMaze {
     Object.keys(this.showNameButtons).forEach((showName) => {
       this.showNameButtons[showName].addEventListener("click", this.setCurrentNameFilter);
     });
+    this.viewElems.btnSearch.addEventListener("click", this.setCurrentNameFilter);
+    this.viewElems.inpSearch.addEventListener("keyup", this.setCurrentNameFilter);
   };
 
-  setCurrentNameFilter = () => {
-    this.selectedName = event.target.dataset.showName;
-    this.fetchAndDisplayShows();
+  setCurrentNameFilter = (e) => {
+    if (e.type === "click" || e.key === "Enter") {
+      if (e.target.classList.contains("dropdown-item")) {
+        this.selectedName = e.target.dataset.showName;
+        console.log(this.selectedName);
+        this.fetchAndDisplayShows();
+      } else {
+        this.selectedName = this.viewElems.inpSearch.value;
+        this.fetchAndDisplayShows();
+      }
+    }
   };
 
   fetchAndDisplayShows = () => {
@@ -90,7 +100,6 @@ class TvMaze {
     if (show.summary) {
       const result = show.summary.replace(/<[^>]*>/g, "");
       if (isDetailed) {
-        console.log(show.summary);
         p = createDOMElem("p", "card-text", result);
       } else {
         p = createDOMElem("p", "card-text", `${result.slice(0, 80)}...`);
