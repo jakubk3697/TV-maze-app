@@ -86,6 +86,7 @@ class TvMaze {
     const box = createDOMElem("div", "box");
     const link = createDOMElem("a", "tvmazeLink", "Check on TVmaze!");
     link.href = show.url;
+    link.target = "_blank";
     let img, p, btn;
 
     if (show.image) {
