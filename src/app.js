@@ -1,9 +1,11 @@
 import { getShowsByKey, getShowById } from "./requests.js";
-import { mapListToDOMElements, createDOMElem } from "./domInteractions.js";
+import { mapListToDOMElements, createDOMElem, disableScrolling, enableScrolling } from "./domInteractions.js";
 
 class TvMaze {
   constructor() {
     this.viewElems = {};
+    this.scrollX;
+    this.scrollY;
     this.showNameButtons = {};
     this.selectedName = "harry";
     this.initializeApp();
@@ -61,6 +63,7 @@ class TvMaze {
     const { showId } = e.target.dataset;
     const closeBtn = document.querySelector(`[id="showPreview"] [data-show-id="${showId}"]`);
     closeBtn.removeEventListener("click", this.closeDetailsView);
+    enableScrolling();
     this.viewElems.showPreview.style.display = "none";
     while (this.viewElems.showPreview.firstChild) this.viewElems.showPreview.removeChild(this.viewElems.showPreview.firstChild);
   };
@@ -99,6 +102,7 @@ class TvMaze {
       btn = createDOMElem("button", "btn btn-danger", "Show details");
       btn.textContent = "Close details";
       btn.addEventListener("click", this.closeDetailsView);
+      disableScrolling();
     } else {
       btn = createDOMElem("button", "btn btn-primary", "Show details");
       btn.textContent = "Show details";
