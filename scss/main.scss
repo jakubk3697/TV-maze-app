@@ -59,11 +59,7 @@ body {
   .card-body {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     min-height: 500px;
-    .btnBox {
-      display: flex;
-      height: 100%;
-      align-items: flex-end;
-    }
   }
 }

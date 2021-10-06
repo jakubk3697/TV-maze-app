@@ -72,7 +72,7 @@ class TvMaze {
     const divCard = createDOMElem("div", "card");
     const divCardBody = createDOMElem("div", "card-body");
     const h5 = createDOMElem("h5", "card-title", show.name);
-    const btnBox = createDOMElem("div", "btnBox");
+    const box = createDOMElem("div", "box");
     let btn;
     let img, p;
 
@@ -112,10 +112,10 @@ class TvMaze {
     btn.dataset.showId = show.id;
     divCard.appendChild(divCardBody);
     divCardBody.appendChild(img);
-    divCardBody.appendChild(h5);
-    divCardBody.appendChild(p);
-    btnBox.appendChild(btn);
-    divCardBody.appendChild(btnBox);
+    box.appendChild(h5);
+    box.appendChild(p);
+    box.appendChild(btn);
+    divCardBody.appendChild(box);
 
     return divCard;
   };
