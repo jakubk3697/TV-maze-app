@@ -69,7 +69,7 @@ class TvMaze {
     const divCard = createDOMElem("div", "card");
     const divCardBody = createDOMElem("div", "card-body");
     const h5 = createDOMElem("h5", "card-title", show.showName);
-    const btn = createDOMElem("button", "btn btn-primary", "Show details");
+    let btn;
     let img, p;
 
     if (show.image) {
@@ -94,14 +94,16 @@ class TvMaze {
       p = createDOMElem("p", "card-text", "there is no summary for that show yet.");
     }
 
-    btn.dataset.showId = show.id;
-
     if (isDetailed) {
+      btn = createDOMElem("button", "btn btn-danger", "Show details");
+      btn.textContent = "Close details";
       btn.addEventListener("click", this.closeDetailsView);
     } else {
+      btn = createDOMElem("button", "btn btn-primary", "Show details");
+      btn.textContent = "Show details";
       btn.addEventListener("click", this.openDetailsView);
     }
-
+    btn.dataset.showId = show.id;
     divCard.appendChild(divCardBody);
     divCardBody.appendChild(img);
     divCardBody.appendChild(h5);
