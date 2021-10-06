@@ -71,7 +71,8 @@ class TvMaze {
   createShowCard = (show, isDetailed) => {
     const divCard = createDOMElem("div", "card");
     const divCardBody = createDOMElem("div", "card-body");
-    const h5 = createDOMElem("h5", "card-title", show.showName);
+    const h5 = createDOMElem("h5", "card-title", show.name);
+    const btnBox = createDOMElem("div", "btnBox");
     let btn;
     let img, p;
 
@@ -113,7 +114,8 @@ class TvMaze {
     divCardBody.appendChild(img);
     divCardBody.appendChild(h5);
     divCardBody.appendChild(p);
-    divCardBody.appendChild(btn);
+    btnBox.appendChild(btn);
+    divCardBody.appendChild(btnBox);
 
     return divCard;
   };
